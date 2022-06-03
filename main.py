@@ -1,12 +1,13 @@
 import os, discord, random, eight_ball
 from discord.ext import commands
-bot = commands.Bot(command_prefix='$', help_command = None)
+command = commands.Bot(command_prefix='$', help_command = None)
+bot = discord.Bot()
 
 @bot.event
 async def on_ready(): 
     print(f'We have logged in as {bot.user}')
     
-@bot.command()
+@command.command()
 async def hello(ctx): 
     await ctx.send(f'Hello, {ctx.author.name}!')
 
@@ -14,7 +15,7 @@ async def hello(ctx):
 async def slash_hello(ctx): 
     await ctx.send(f'Hello, {ctx.author.name}!')
 
-@bot.command()
+@command.command()
 async def help(ctx):
     embed = discord.Embed(
         title = 'Help',
@@ -25,7 +26,7 @@ async def help(ctx):
     embed.add_field(name='Commands', value='`hello`, `help`, `roll`, `8ball`, `invite`')
     await ctx.send(embed=embed)
 
-@bot.command()
+@command.command()
 async def roll(ctx, number=6): 
     await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
 
@@ -34,7 +35,7 @@ async def roll(ctx, number=6):
 async def slash_roll(ctx:discord.ApplicationContext, number:int): 
     await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
 
-@bot.command(name='8ball')
+@command.command(name='8ball')
 async def eight_ball_command(ctx, *, question):
     if len(question) > 0:
         embed = discord.Embed(
@@ -58,7 +59,7 @@ async def slash_eight_ball(ctx:discord.ApplicationContext, question:str):
     embed.add_field(name=question, value=eight_ball.eight_ball(question))
     await ctx.send(embed=embed)
 
-@bot.command()
+@command.command()
 async def invite(ctx):
     embed = discord.Embed(
       title = 'Invite the bot!',
