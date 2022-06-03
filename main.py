@@ -46,4 +46,8 @@ async def invite(ctx):
     embed.add_field(name='Invite Personal to a server', value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize?client_id=954564559467868171&permissions=274877908992&scope=bot%20applications.commands)**')
     await ctx.respond('', embed=embed)
 
+@bot.slash_command(description='Test the ping of the bot!')
+async def ping(ctx):
+    await ctx.respond(f'Pong! :ping_pong {round(bot.latency * 1000)}ms.')
+
 bot.run(os.environ['DISCORD_TOKEN'])
