@@ -10,14 +10,14 @@ async def hello(ctx):
     await ctx.respond(f'Hello, {ctx.author.name}!')
 
 @bot.slash_command(description='Shows help options for commands')
-async def help(ctx):
+async def help(ctx:discord.ApplicationContext):
     embed = discord.Embed(
-        color = 0x3abad3,
+        color=discord.Color.random(),
         title = 'Help',
         description = 'For more info about a command, use `/help [command]`',
     )    
     embed.add_field(name='Commands', value='`hello`, `help`, `roll`, `8ball`, `invite`')
-    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar_url)
+    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
 @bot.slash_command(description='Roll a die!')
@@ -29,21 +29,21 @@ async def roll(ctx:discord.ApplicationContext, number:int):
 @discord.option('question', description='Ask your question!')
 async def c_eight_ball(ctx:discord.ApplicationContext, question:str):
     embed = discord.Embed(
-        color=0x3abad3,
+        color=discord.Color.random(),
         title='Magic 8-Ball :8ball:',
     )
     embed.add_field(name=question, value=eight_ball.eight_ball(question))
-    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar_url)
+    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
 @bot.slash_command(name='invite', description='Invite the bot to a server!')
-async def invite(ctx):
+async def invite(ctx:discord.ApplicationContext):
     embed = discord.Embed(
-        color=0x3abad3,
+        color=discord.Color.random(),
         title='Invite the bot!',
     )
     embed.add_field(name='Invite Personal to a server', value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize?client_id=954564559467868171&permissions=274877908992&scope=bot%20applications.commands)**')
-    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar_url)
+    embed.set_footer(text = f'Requested by {ctx.author}', icon_url = ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
 @bot.slash_command(description='Test the ping of the bot!')
