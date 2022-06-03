@@ -48,6 +48,6 @@ async def invite(ctx):
 
 @bot.slash_command(description='Test the ping of the bot!')
 async def ping(ctx):
-    await ctx.respond(f'Pong! :ping_pong {round(bot.latency * 1000)}ms.')
+    await ctx.respond(f'Pong! :ping_pong: {round(bot.latency * 1000)}ms')
 
 bot.run(os.environ['DISCORD_TOKEN'])
