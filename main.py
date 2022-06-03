@@ -8,13 +8,16 @@ client = commands.Bot(command_prefix = '$', help_command = None)
 slash = SlashCommand(client, sync_commands=True)
 
 @client.event
-async def on_ready(): print(f'We have logged in as {client.user}')
+async def on_ready(): 
+  print(f'We have logged in as {client.user}')
     
 @client.command()
-async def hello(ctx): await ctx.send(f'Hello, {ctx.author.name}!')
+async def hello(ctx): 
+  await ctx.send(f'Hello, {ctx.author.name}!')
 
 @slash.slash(name='hello', description='Says hello!')
-async def slash_hello(ctx): await ctx.send(f'Hello, {ctx.author.name}!')
+async def slash_hello(ctx): 
+  await ctx.send(f'Hello, {ctx.author.name}!')
 
 @client.command()
 async def help(ctx):
@@ -28,7 +31,8 @@ async def help(ctx):
   await ctx.send(embed=embed)
 
 @client.command()
-async def roll(ctx, number=6): await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
+async def roll(ctx, number=6): 
+  await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
 
 @slash.slash(
   name = 'roll',
@@ -42,7 +46,8 @@ async def roll(ctx, number=6): await ctx.send(f'**{ctx.author.name}** rolled a *
     )
   ]
 )
-async def slash_roll(ctx:SlashContext, number:int=6): await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
+async def slash_roll(ctx:SlashContext, number:int=6): 
+  await ctx.send(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
 
 @client.command(name='8ball')
 async def eight_ball_command(ctx, *, question):
