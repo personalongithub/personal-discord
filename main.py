@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_choice, create_option
 from eight_ball import eight_ball
-discord_token = os.getenv('DISCORD_TOKEN')
 client = commands.Bot(command_prefix = '$', help_command = None)
 slash = SlashCommand(client, sync_commands=True)
 
