@@ -1,1 +1,1 @@
-# personal-discord
+# Personal Discord Bot
