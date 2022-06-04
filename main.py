@@ -11,7 +11,7 @@ async def hello(ctx):
 
 @bot.slash_command(description='Shows help options for commands')
 @discord.option('topic', description='Get help for a specific command', default='main')
-async def help(ctx:discord.ApplicationContext):
+async def help(ctx:discord.ApplicationContext, topic:str):
     embed = discord.Embed(
         color=discord.Color.random(),
         title='Commands',
