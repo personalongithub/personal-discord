@@ -10,13 +10,14 @@ async def hello(ctx):
     await ctx.respond(f'Hello, {ctx.author.name}!')
 
 @bot.slash_command(description='Shows help options for commands')
+@discord.option('topic', description='Get help for a specific command', default='main')
 async def help(ctx:discord.ApplicationContext):
     embed = discord.Embed(
         color=discord.Color.random(),
-        title='Help',
+        title='Commands',
         description='For more info about a command, use `/help [command]`',
     )    
-    embed.add_field(name='Commands', value='`hello`, `help`, `roll`, `8ball`, `invite`')
+    embed.add_field(name='List of Commands', value='`hello`, `help`, `roll`, `8ball`, `invite`')
     embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
