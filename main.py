@@ -1,4 +1,5 @@
-import os, discord, random, eight_ball
+import os, discord, random
+from resources import help_docs, eight_ball
 bot = discord.Bot()
 
 @bot.event
@@ -10,16 +11,16 @@ async def hello(ctx):
     await ctx.respond(f'Hello, {ctx.author.name}!')
 
 @bot.slash_command(description='Shows help options for commands')
-@discord.option('topic', description='Get help for a specific command', default='main')
+@discord.option('topic', description='Get help for a specific command', default='main', choices=['8ball', 'hello', 'help', 'invite', 'main', 'roll'])
 async def help(ctx:discord.ApplicationContext, topic:str):
-    embed = discord.Embed(
-        color=discord.Color.random(),
-        title='Commands',
-        description='For more info about a command, use `/help [command]`',
-    )    
-    embed.add_field(name='List of Commands', value='`hello`, `help`, `roll`, `8ball`, `invite`')
-    embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
-    await ctx.respond(embed=embed)
+    try:
+        embed, usage = help_docs.get_help(topic)
+    except:
+        await ctx.respond('I cannot get this help topic!')
+    else:
+        embed.add_field(name='List of Commands' if topic == 'main' else 'Usage', value=usage)
+        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
+        await ctx.respond(embed=embed)
 
 @bot.slash_command(description='Roll a die!')
 @discord.option('number', description='Choose a number!', min_value=2, default=6)
@@ -28,7 +29,7 @@ async def roll(ctx:discord.ApplicationContext, number:int):
 
 @bot.slash_command(name='8ball', description="What's your fortune?")
 @discord.option('question', description='Ask your question!')
-async def c_eight_ball(ctx:discord.ApplicationContext, question:str):
+async def c_eight_ball(ctx:discord.ApplicationContext, question:discord.SlashCommandOptionType.string):
     embed = discord.Embed(
         color=discord.Color.random(),
         title='Magic 8-Ball :8ball:',
@@ -49,6 +50,6 @@ async def invite(ctx:discord.ApplicationContext):
 
 @bot.slash_command(description='Test the ping of the bot!')
 async def ping(ctx):
-    await ctx.respond(f'Pong! :ping_pong:  {round(bot.latency * 1000)}ms')
+    await ctx.respond(f'Pong! :ping_pong:  Latency is {round(bot.latency * 1000)}ms')
 
 bot.run(os.environ['DISCORD_TOKEN'])
