@@ -20,21 +20,21 @@ def get_help(topic):
             title='Help',
             description='Shows help information lmao'
         )
-        usage = '/help [command]*'
+        usage = '`/help [command]*`'
     elif topic == 'invite':
         embed = discord.Embed(
             color=discord.Color.random(),
             title='Invite',
             description='Gives the invite link of the bot.'
         )
-        usage = '/invite'
+        usage = '`/invite`'
     elif topic == 'roll':
         embed = discord.Embed(
             color=discord.Color.random(),
             title='Roll',
             description='Rolls the dice based on the number you select.'
         )
-        usage = '/roll [integer]'
+        usage = '`/roll [integer]`'
     elif topic == 'ping':
         embed = discord.Embed(
             color=discord.Color.random(),
