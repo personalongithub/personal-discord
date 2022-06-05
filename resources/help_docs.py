@@ -6,7 +6,7 @@ def get_help(topic):
             title='Commands',
             description='For more info about a command, use `/help [command]`'
         )
-        usage = '`hello`, `help`, `roll`, `8ball`, `invite`'
+        usage = '`hello`, `help`, `roll`, `8ball`, `invite`, `ping`'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),
@@ -35,5 +35,10 @@ def get_help(topic):
             description='Rolls the dice based on the number you select.'
         )
         usage = '/roll [integer]'
+    elif topic == 'ping':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Ping',
+            description='Tests the latency of the bot.'
+        )
     return embed, usage
-    

@@ -11,7 +11,7 @@ async def hello(ctx):
     await ctx.respond(f'Hello, {ctx.author.name}!')
 
 @bot.slash_command(description='Shows help options for commands')
-@discord.option('topic', description='Get help for a specific command', default='main', choices=['8ball', 'hello', 'help', 'invite', 'main', 'roll'])
+@discord.option('topic', description='Get help for a specific command', default='main', choices=['8ball', 'hello', 'help', 'invite', 'main', 'ping', 'roll'])
 async def help(ctx: discord.ApplicationContext, topic: str):
     embed, usage = help_docs.get_help(topic)
     embed.add_field(name='List of Commands' if topic == 'main' else 'Usage', value=usage)
@@ -21,7 +21,7 @@ async def help(ctx: discord.ApplicationContext, topic: str):
 @bot.slash_command(description='Roll a die!')
 @discord.option('number', description='Choose a number!', min_value=2, default=6)
 async def roll(ctx: discord.ApplicationContext, number: int):
-    await ctx.respond(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number})')
+    await ctx.respond(f'**{ctx.author.name}** rolled a **{random.randint(1, number)}**! (1-{number}) :game_die:')
 
 @bot.slash_command(name='8ball', description="What's your fortune?")
 @discord.option('question', description='Ask your question!')
