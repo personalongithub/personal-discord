@@ -4,17 +4,36 @@ def get_help(topic):
         embed = discord.Embed(
             color=discord.Color.random(),
             title='Commands',
-            description='For more info about a command, use `/help [command]`',
+            description='For more info about a command, use `/help [command]`'
         )
         usage = '`hello`, `help`, `roll`, `8ball`, `invite`'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),
             title='Hello',
-            description='Says hello!',
+            description='Says hello!'
         )
         usage = '`/hello`'
-    else:
-        pass
+    elif topic == 'help':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Help',
+            description='Shows help information lmao'
+        )
+        usage = '/help [command]*'
+    elif topic == 'invite':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Invite',
+            description='Gives the invite link of the bot.'
+        )
+        usage = '/invite'
+    elif topic == 'roll':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Roll',
+            description='Rolls the dice based on the number you select.'
+        )
+        usage = '/roll [integer]'
     return embed, usage
     
