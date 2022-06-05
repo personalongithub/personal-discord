@@ -41,4 +41,5 @@ def get_help(topic):
             title='Ping',
             description='Tests the latency of the bot.'
         )
+        usage = '/ping'
     return embed, usage
