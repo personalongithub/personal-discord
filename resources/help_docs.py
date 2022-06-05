@@ -7,6 +7,13 @@ def get_help(topic):
             description='For more info about a command, use `/help [command]`'
         )
         usage = '`hello`, `help`, `roll`, `8ball`, `invite`, `ping`'
+    elif topic == '8ball':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='8-Ball',
+            description='Grab your fortune with this Magic 8-Ball.'
+        )
+        usage='`/8ball [question]'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),
