@@ -13,7 +13,7 @@ def get_help(topic):
             title='8-Ball',
             description='Grab your fortune with this Magic 8-Ball.'
         )
-        usage='`/8ball [question]'
+        usage='`/8ball [question]`'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),
