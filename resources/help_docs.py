@@ -1,4 +1,6 @@
 import discord
+
+
 def get_help(topic):
     if topic == 'main':
         embed = discord.Embed(
