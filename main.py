@@ -56,8 +56,8 @@ async def invite(ctx: discord.ApplicationContext):
         title='Invite the bot!',
     )
     embed.add_field(name='Invite Personal to a server',
-    value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize \
-    ?client_id=954564559467868171&permissions=274877908992&scope=bot%20applications.commands)**')
+    value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize'\
+    '?client_id=954564559467868171&permissions=274877908992&scope=bot%20applications.commands)**')
     embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
