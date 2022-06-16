@@ -76,6 +76,6 @@ async def coordinate(ctx: discord.ApplicationContext, location: str):
         await ctx.respond('The coordinates for this location are '\
             f'**({location_info.latitude}, {location_info.longitude})** :map:')
     except AttributeError:
-        await ctx.respond('Failed to get coordinates for this location')
+        await ctx.respond('We have failed to get coordinates for this location!')
 
 bot.run(os.environ['DISCORD_TOKEN'])
