@@ -17,7 +17,14 @@ def get_help(topic):
             title='8-Ball',
             description='Grab your fortune with this Magic 8-Ball.'
         )
-        usage='`/8ball [question]`'
+        usage = '`/8ball [question]`'
+    elif topic == 'coordinate':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Coordinate',
+            description='Grabs the coordinates of any location.'
+        )
+        usage = '`/coordinate [location]`'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),

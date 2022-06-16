@@ -3,6 +3,7 @@ import os
 import random
 
 import discord
+from geopy.geocoders import Nominatim
 from resources import eight_ball, help_docs
 
 bot = discord.Bot()
@@ -13,7 +14,7 @@ async def on_ready():
     print(f'The bot has successfully logged in as {bot.user}')
 
 @bot.slash_command(description='Says hello!')
-async def hello(ctx):
+async def hello(ctx: discord.ApplicationContext):
     'Says hello!'
     await ctx.respond(f'Hello, {ctx.author.name}!')
 
@@ -21,7 +22,7 @@ async def hello(ctx):
 @discord.option('topic',
 description='Get help for a specific command',
 default='main',
-choices=['8ball', 'hello', 'help', 'invite', 'main', 'ping', 'roll'])
+choices=['8ball', 'coordinate', 'hello', 'help', 'invite', 'main', 'ping', 'roll'])
 async def slash_help(ctx: discord.ApplicationContext, topic: str):
     'Shows help options for commands'
     embed, usage = help_docs.get_help(topic)
@@ -65,5 +66,13 @@ async def invite(ctx: discord.ApplicationContext):
 async def ping(ctx: discord.ApplicationContext):
     'Test the latency of the bot!'
     await ctx.respond(f'Pong! :ping_pong:  Latency is {round(bot.latency * 1000)}ms')
+
+@bot.slash_command(description='Grab the coordinates of a location.')
+@discord.option('location', description='This location is used for grabbing coordinates.')
+async def coordinate(ctx: discord.ApplicationContext, location: str):
+    'Grab the coordinates of a location.'
+    location_info = Nominatim(user_agent='Persnonal Discord Bot').geocode(location)
+    await ctx.respond('The coordinates for this location are'\
+        f'({location_info.latitude}, {location_info.longitude} :map:')
 
 bot.run(os.environ['DISCORD_TOKEN'])
