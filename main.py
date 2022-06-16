@@ -71,8 +71,8 @@ async def ping(ctx: discord.ApplicationContext):
 @discord.option('location', description='This location is used for grabbing coordinates.')
 async def coordinate(ctx: discord.ApplicationContext, location: str):
     'Grab the coordinates of a location.'
-    location_info = Nominatim(user_agent='Persnonal Discord Bot').geocode(location)
-    await ctx.respond('The coordinates for this location are'\
-        f'({location_info.latitude}, {location_info.longitude}) :map:')
+    location_info = Nominatim(user_agent='Personal Discord Bot').geocode(location)
+    await ctx.respond('The coordinates for this location are '\
+        f'**({location_info.latitude}, {location_info.longitude})** :map:')
 
 bot.run(os.environ['DISCORD_TOKEN'])
