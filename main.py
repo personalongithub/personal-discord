@@ -22,7 +22,7 @@ async def hello(ctx: discord.ApplicationContext):
 @discord.option('topic',
 description='Get help for a specific command',
 default='main',
-choices=['8ball', 'coordinate', 'hello', 'help', 'invite', 'main', 'ping', 'roll'])
+choices=['8ball', 'coordinate', 'hello', 'help', 'invite', 'ping', 'roll'])
 async def slash_help(ctx: discord.ApplicationContext, topic: str):
     'Shows help options for commands'
     embed, usage = help_docs.get_help(topic)
@@ -69,12 +69,15 @@ async def ping(ctx: discord.ApplicationContext):
 
 @bot.slash_command(description='Grab the coordinates of a location.')
 @discord.option('location', description='This location is used for grabbing coordinates.')
-async def coordinate(ctx: discord.ApplicationContext, location: str):
+@discord.option('privacy',
+description="Sends the location privately so that others don't see it.", default=False)
+async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bool):
     'Grab the coordinates of a location.'
     try:
         location_info = Nominatim(user_agent='Personal Discord Bot').geocode(location)
         await ctx.respond('The coordinates for this location are '\
-            f'**({location_info.latitude}, {location_info.longitude})** :map:')
+            f'**({location_info.latitude}, {location_info.longitude})** :map:',
+            ephemeral=bool(privacy))
     except AttributeError:
         await ctx.respond('We have failed to get coordinates for this location!')
 

@@ -24,7 +24,7 @@ def get_help(topic):
             title='Coordinate',
             description='Grabs the coordinates of any location.'
         )
-        usage = '`/coordinate [location]`'
+        usage = '`/coordinate [location] [privacy]*`'
     elif topic == 'hello':
         embed = discord.Embed(
             color=discord.Color.random(),
