@@ -90,7 +90,9 @@ async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bo
             f'**({location_info.latitude}, {location_info.longitude})** :map:',
             ephemeral=bool(privacy))
     except AttributeError:
-        await ctx.respond('We have failed to get coordinates for this location!')
+        await ctx.respond(
+            'We have failed to get coordinates for this location!',
+            ephemeral=bool(privacy))
 
 
 bot.run(os.environ['DISCORD_TOKEN'])
