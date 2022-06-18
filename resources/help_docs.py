@@ -1,9 +1,9 @@
-'Module for grabbing help topics.'
+"""Module for grabbing help topics."""
 import discord
 
 
 def get_help(topic):
-    'Grabs a help topic'
+    """Grabs a help topic"""
     if topic == 'main':
         embed = discord.Embed(
             color=discord.Color.random(),

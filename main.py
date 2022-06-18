@@ -64,8 +64,8 @@ async def invite(ctx: discord.ApplicationContext):
     )
     embed.add_field(name='Invite Personal to a server',
                     value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize'\
-                          '?client_id=954564559467868171&permissions=274877908992&scope=bot'\
-                            '%20applications.commands)**')
+                        '?client_id=954564559467868171&permissions=274877908992&scope=bot'\
+                        '%20applications.commands)**')
     embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
     await ctx.respond(embed=embed)
 
@@ -86,7 +86,7 @@ async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bo
     try:
         location_info = Nominatim(user_agent='Personal Discord Bot').geocode(location)
         await ctx.respond(
-            'The coordinates for this location are'\
+            'The coordinates for this location are '\
             f'**({location_info.latitude}, {location_info.longitude})** :map:',
             ephemeral=bool(privacy))
     except AttributeError:

@@ -1,9 +1,9 @@
-'Gives the functions of a Magic 8-Ball.'
+"""Gives the functions of a Magic 8-Ball."""
 import random
 
 
 def eight_ball(question):
-    'Functions like a Magic 8-Ball.'
+    """Functions like a Magic 8-Ball."""
     answer = random.randint(1, 20)
     if '?' in question:
         if answer == 1:
