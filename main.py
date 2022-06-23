@@ -101,8 +101,10 @@ async def stringify(ctx: discord.ApplicationContext, length: int):
     for i in range(length):
         string += random.choice(variables.STRING_SET)
         del i
-    if ('|', '`', '_', '*') in string:
-        string = "\\" + string
+    for character in ('|', '`', '_', '*'):
+        if character in string:
+            string = '\\' + string
+            break
     await ctx.respond(string)
 
 
