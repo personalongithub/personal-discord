@@ -4,7 +4,7 @@ import random
 
 import discord
 from geopy.geocoders import Nominatim
-from resources import eight_ball, help_docs
+from resources import eight_ball, help_docs, variables
 
 bot = discord.Bot()
 
@@ -25,7 +25,8 @@ async def hello(ctx: discord.ApplicationContext):
 @discord.option('topic',
                 description='Get help for a specific command',
                 default='main',
-                choices=['8ball', 'coordinate', 'hello', 'help', 'invite', 'ping', 'roll'])
+                choices=['8ball', 'coordinate', 'hello', 'help', 'invite', 'ping', 'roll',
+                'stringify'])
 async def slash_help(ctx: discord.ApplicationContext, topic: str):
     """Shows help options for commands"""
     embed, usage = help_docs.get_help(topic)
@@ -58,10 +59,7 @@ async def c_eight_ball(ctx: discord.ApplicationContext, question: str):
 @bot.slash_command(name='invite', description='Invite the bot to a server!')
 async def invite(ctx: discord.ApplicationContext):
     """Invite the bot to a server!"""
-    embed = discord.Embed(
-        color=discord.Color.random(),
-        title='Invite the bot!',
-    )
+    embed = discord.Embed(color=discord.Color.random(), title='Invite the bot!')
     embed.add_field(name='Invite Personal to a server',
                     value='**[Personal Invite Link](https://discord.com/api/oauth2/authorize'\
                         '?client_id=954564559467868171&permissions=274877908992&scope=bot'\
@@ -93,6 +91,16 @@ async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bo
         await ctx.respond(
             'We have failed to get coordinates for this location!',
             ephemeral=bool(privacy))
+
+@bot.slash_command(description='Make a random string of characters of any length')
+@discord.option('length', description='How long will your string be?', min_value=1)
+async def stringify(ctx: discord.ApplicationContext, length: int):
+    """Makes a random string that is a select amount of characters."""
+    string = ''
+    for i in length:
+        string += random.choice(variables.STRING_SET)
+        del i
+    await ctx.respond(string)
 
 
 bot.run(os.environ['DISCORD_TOKEN'])

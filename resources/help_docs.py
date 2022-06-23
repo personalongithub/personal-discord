@@ -60,4 +60,11 @@ def get_help(topic):
             description='Tests the latency of the bot.'
         )
         usage = '`/ping`'
+    elif topic == 'stringify':
+        embed = discord.Embed(
+            color=discord.Color.random(),
+            title='Stringify',
+            description='Makes a random string.'
+        )
+        usage = '`/stringify [length]`'
     return embed, usage

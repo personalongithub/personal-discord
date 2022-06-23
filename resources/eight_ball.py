@@ -7,46 +7,47 @@ def eight_ball(question):
     answer = random.randint(1, 20)
     if '?' in question:
         if answer == 1:
-            return 'Yes - definitely.'
+            returned_answer ='Yes - definitely.'
         elif answer == 2:
-            return 'It is decidedly so.'
+            returned_answer = 'It is decidedly so.'
         elif answer == 3:
-            return 'Without a doubt.'
+            returned_answer = 'Without a doubt.'
         elif answer == 4:
-            return 'Reply hazy, try again.'
+            returned_answer = 'Reply hazy, try again.'
         elif answer == 5:
-            return 'Ask again later.'
+            returned_answer = 'Ask again later.'
         elif answer == 6:
-            return 'Better not tell you now.'
+            returned_answer = 'Better not tell you now.'
         elif answer == 7:
-            return 'My sources say no.'
+            returned_answer = 'My sources say no.'
         elif answer == 8:
-            return 'Outlook not so good.'
+            returned_answer = 'Outlook not so good.'
         elif answer == 9:
-            return 'Very doubtful.'
+            returned_answer = 'Very doubtful.'
         elif answer == 10:
-            return 'It is certain.'
+            returned_answer = 'It is certain.'
         elif answer == 11:
-            return 'You may rely on it.'
+            returned_answer = 'You may rely on it.'
         elif answer == 12:
-            return 'As I see it, yes.'
+            returned_answer = 'As I see it, yes.'
         elif answer == 13:
-            return 'Most likely.'
+            returned_answer = 'Most likely.'
         elif answer == 14:
-            return 'Outlook good.'
+            returned_answer = 'Outlook good.'
         elif answer == 15:
-            return 'Yes.'
+            returned_answer = 'Yes.'
         elif answer == 16:
-            return 'Signs point to yes.'
+            returned_answer = 'Signs point to yes.'
         elif answer == 17:
-            return 'Cannot predict now.'
+            returned_answer = 'Cannot predict now.'
         elif answer == 18:
-            return 'Concentrate and ask again.'
+            returned_answer = 'Concentrate and ask again.'
         elif answer == 19:
-            return "Don't count on it."
+            returned_answer = "Don't count on it."
         elif answer == 20:
-            return 'My reply is no.'
+            returned_answer = 'My reply is no.'
         else:
-            return 'There has been an error!'
+            returned_answer = 'There has been an error!'
     else:
-        return 'A question must contain a question mark.'
+        returned_answer = 'A question must contain a question mark.'
+    return returned_answer
