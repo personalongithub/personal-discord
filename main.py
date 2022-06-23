@@ -94,17 +94,14 @@ async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bo
 
 
 @bot.slash_command(description='Make a random string of characters of any length')
-@discord.option('length', description='How long will your string be?', min_value=1, max_value=2000)
+@discord.option('length', description='How long will your string be?', min_value=1, max_value=1994)
 async def stringify(ctx: discord.ApplicationContext, length: int):
     """Makes a random string that is a select amount of characters."""
-    string = ''
+    string = '```'
     for i in range(length):
         string += random.choice(variables.STRING_SET)
         del i
-    for character in ('|', '`', '_', '*'):
-        if character in string:
-            string = '\\' + string
-            break
+    string += '```'
     await ctx.respond(string)
 
 
