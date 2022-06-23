@@ -97,7 +97,7 @@ async def coordinate(ctx: discord.ApplicationContext, location: str, privacy: bo
 async def stringify(ctx: discord.ApplicationContext, length: int):
     """Makes a random string that is a select amount of characters."""
     string = ''
-    for i in length:
+    for i in range(length):
         string += random.choice(variables.STRING_SET)
         del i
     await ctx.respond(string)
