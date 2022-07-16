@@ -1,2 +1,2 @@
 geopy==2.2.0
-py-cord==2.0.0rc1
+py-cord==2.0.0
